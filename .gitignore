@@ -245,3 +245,6 @@ server/voices/
 # Local model weights / caches
 *.gguf
 models/
+
+# Local AI-agent instructions — not part of the published project
+AGENTS.md

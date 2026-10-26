@@ -1,6 +1,6 @@
-# speech2speechAI
+# speech2speechAI — Local AI Voice Assistant with Voice Cloning
 
-A real-time voice assistant that runs **entirely on your own machine** — no cloud APIs, no keys. Tap the orb, talk, and it answers in any voice you like, including **your own cloned voice** recorded straight from your microphone.
+**speech2speechAI** is a free, open-source, self-hosted **real-time voice assistant** that runs **entirely on your own computer** — no cloud APIs, no API keys, no subscription. Tap the orb, talk, and it answers out loud in any voice you like, including **your own cloned voice** recorded straight from your microphone. It's a private, offline **speech-to-speech** alternative to hosted voice AI.
 
 ```
 you speak → VAD (silero) → STT → local LLM (Gemma) → TTS (Qwen3) → the orb replies
@@ -10,10 +10,11 @@ The server speaks the **OpenAI Realtime protocol** over WebSocket (and WebRTC), 
 
 ## Highlights
 
+- **Runs on consumer hardware** — no datacenter needed. Verified on a laptop with **16 GB of RAM**; speech recognition, the LLM, and speech synthesis all run on-device.
 - **Voice cloning from the browser** — record a ~15-second sample in Settings, and the assistant speaks with that voice. Save multiple clones and switch between them anytime (per-voice, applied live mid-conversation).
-- **100% local** — speech detection, transcription, the LLM, and synthesis all run on your machine. Nothing leaves it.
+- **100% local & private** — nothing leaves your machine; works fully offline after the first model download.
 - **Realtime protocol** — OpenAI Realtime events over WebSocket/WebRTC; clients built for OpenAI's Realtime API can point here instead.
-- **Responsive UI** — a full-screen orb interface that works on desktop, tablet, and phone.
+- **Responsive web UI** — a modern bottom-dock interface that works on desktop, tablet, and phone (HTTPS + same-origin relay for phone microphone access over Wi-Fi).
 - **Swappable pipeline** — every stage (VAD, STT, LLM, TTS) is pluggable via CLI flags.
 
 ## Quick start (Apple Silicon macOS)
@@ -28,6 +29,8 @@ The server speaks the **OpenAI Realtime protocol** over WebSocket (and WebRTC), 
 ./start-speech2speechAI.sh          # start (or status / stop)
 open https://127.0.0.1:7860
 ```
+
+**Hardware:** a consumer computer is enough — the default Apple Silicon setup is verified on **16 GB** of unified memory. (Linux/NVIDIA setups are supported by the pipeline too; see the model backend docs below.)
 
 The script expects:
 
